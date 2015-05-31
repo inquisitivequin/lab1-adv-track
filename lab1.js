@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /* LAB 1: A Trip to Woodland Park Zoo
 
@@ -19,17 +19,17 @@
  Instructions for turning this lab in are in the assignment description in
  Canvas.
 
- I'm happy to answer any questions on Slack.
+ I"m happy to answer any questions on Slack.
 
 */
 
 /* ----------------- Helper ------------------------------------------------
- We've implemented a function that will help you sanity-check your code.
+ We"ve implemented a function that will help you sanity-check your code.
 */
 
-function assert(expression, failureMessage) {
-  if (!expression) {
-    console.log('assertion failure: ', failureMessage);
+function assert( expression, failureMessage ) {
+  if ( !expression ) {
+    console.log ( "assertion failure: ", failureMessage );
   }
 }
 
@@ -37,14 +37,14 @@ function assert(expression, failureMessage) {
  An assertion is something we expect to be true about the state of the
  program at the point where the assertion is made.
 
- Remember, state is all the variables that we've declared and their current
+ Remember, state is all the variables that we"ve declared and their current
  values.
 
  Here are some examples for how to use the assert method:
 */
 
-assert(1 === 1);
-assert(1 === 2, 'this is an assertion failure example. 1 === 2');
+assert( 1 === 1 );
+assert( 1 === 2, "this is an assertion failure example. 1 === 2" );
 
 /*------------------Assertions-------------------------------------------------
  TODO: 8 points
@@ -54,59 +54,84 @@ assert(1 === 2, 'this is an assertion failure example. 1 === 2');
  it failed.
 */
 
-//your code goes here
+var kats = "meerkats";
+var num = 8;
+
+assert( kats === "meer" + "kats" );
+assert( kats === num, "number to string comparison returns false" );
 
 /* ----------------- Meerkats -------------------------------------------------
  Meerkats make a sort of chirping noise (according to my 30 seconds of
- research).  We're going to translate two sentences into meerkat speech.
+ research).  We"re going to translate two sentences into meerkat speech.
 */
 
-var sentence1 = 'More food please.';
-var sentence2 = 'Come over here so you can scratch my belly.';
+var sentence1 = "More food please.";
+var sentence2 = "Come over here so you can scratch my belly.";
 
 /*
  TODO: 20 points
- Your goal is to replace the words in the above sentences with 'chirp' The
- assertions at the end of this section should pass when you're done.  Use
+ Your goal is to replace the words in the above sentences with "chirp" The
+ assertions at the end of this section should pass when you"re done.  Use
  **two** different kinds of loops to implement this. (10 points each.)
- HINT: the 'split' method on String will be useful.
+ HINT: the "split" method on String will be useful.
 */
 
-//your code goes here
+var sent1arr = [];
 
-assert(sentence1 === 'chirp chirp chirp.', 'sentence 1 should have 3 chirps');
-assert(sentence2 === 'chirp chirp chirp chirp chirp chirp chirp chirp chirp.',
-  'sentence 2 should have 9 chirps');
+while ( sent1arr.length < 3 ) {
+	sent1arr.push( "chirp" );
+	if ( sent1arr.length === 3 ) {
+		sentence1 = sent1arr.join( " " ).concat( "." );
+	}
+}
+
+// if(sentence1 === "chirp chirp chirp ."){
+// 	console.log(sentence1);
+// }
+
+var sent2arr = sentence2.split( " " );
+
+for ( var i = 0; i < sent2arr.length; i++ ) {
+	sent2arr[i] = ( "chirp" );
+	if ( i === 8 ) {
+		sentence2 = sent2arr.join( " " ).concat( "." );
+	}
+}
+
+assert( sentence1 === "chirp chirp chirp.", "sentence 1 should have 3 chirps" );
+assert( sentence2 === "chirp chirp chirp chirp chirp chirp chirp chirp chirp.",
+  "sentence 2 should have 9 chirps" );
 
 /* ----------------- Favorite Animals ----------------------------------------
- The zoo is closing in 20 minutes. You still haven't seen your four favorite
+ The zoo is closing in 20 minutes. You still haven"t seen your four favorite
  animals. You only have time for one. Use Math.random() to pick which animal
  to see next.
  Hint: read the Math.random description on MDN.
 */
 
-var favoriteAnimals = ['elephant', 'penguin', 'eagle', 'camel'];
+var favoriteAnimals = [ "elephant", "penguin", "eagle", "camel" ];
 var nextAnimal;
 
 // TODO: 12 points
 // Assign one of your favorite animals to nextAnimal using Math.random() to pick
 
-// your code goes here
+var num = Math.floor( Math.random( favoriteAnimals.length - 1 ) + 1 );
+nextAnimal = favoriteAnimals[num];
 
-assert(nextAnimal, 'assign something to nextAnimal');
+assert( nextAnimal, "assign something to nextAnimal" );
 
 /* ----------------- Hungry Lion ----------------------------------------
- As long as the lion is well-fed, he doesn't take too much heed of the
+ As long as the lion is well-fed, he doesn"t take too much heed of the
  humans that pass through. Unfortunately, the new caretaker is a little
  absent minded.
 
- The lion needs 4 meals per day on average to stay happy. You're going to
+ The lion needs 4 meals per day on average to stay happy. You"re going to
  figure out how many days it took before the lion decided to supplement his
  diet with the caretaker.
 */
 
 // number of times the new caretaker fed the lion. one array entry per day
-var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
+var mealsPerDay = [ 5, 4, 3, 6, 2, 4, 3, 4, 5, 1 ];
 var tooHungryDay;
 
 /*
@@ -117,18 +142,24 @@ var tooHungryDay;
  pondering protein supplements (the first day the average dips below 4
  meals)
 */
+var tooHungryDay = 0;
 
-// your code goes here
+for ( var i = 0; i < mealsPerDay.length; i++ ) {
+	console.log( mealsPerDay[i] );
+	if ( mealsPerDay[i] < 4 ) {
+		tooHungryDay++;
+	}
+}
 
-assert(tooHungryDay, 'remember to assign the answer to tooHungryDay');
-assert(tooHungryDay < 10, 'the lion is too hungry before the end of the array');
+assert( tooHungryDay, "remember to assign the answer to tooHungryDay" );
+assert( tooHungryDay < 10, "the lion is too hungry before the end of the array" );
 
 /* ----------------- Code Style ----------------------------------------
  TODO: 10 points
- Now, we're going to use two tools: jshint and jscs, to check our code for
+ Now, we"re going to use two tools: jshint and jscs, to check our code for
  best-practices and style consistency.
 
- If you haven't already, run this command in the terminal (inside of this
+ If you haven"t already, run this command in the terminal (inside of this
  directory): npm install
 
  Now, type
