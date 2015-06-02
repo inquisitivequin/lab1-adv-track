@@ -1,4 +1,4 @@
-"use strict";
+ "use strict";
 
 /* LAB 1: A Trip to Woodland Park Zoo
 
@@ -145,7 +145,7 @@ var tooHungryDay;
 var tooHungryDay = 0;
 
 for ( var i = 0; i < mealsPerDay.length; i++ ) {
-	console.log( mealsPerDay[i] );
+	console.log( mealsPerDay[i] / i );
 	if ( mealsPerDay[i] < 4 ) {
 		tooHungryDay++;
 	}
